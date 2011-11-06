@@ -13,6 +13,8 @@
 
 @synthesize vigenere;
 @synthesize mode;
+@synthesize fullSize;
+@synthesize reducedSize;
 
 @synthesize tvText;
 @synthesize tfKey;
@@ -69,6 +71,25 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
+    if(interfaceOrientation == UIInterfaceOrientationPortrait)
+    {
+        fullSize = CGRectMake(0, 57, 320, 344);
+        reducedSize = CGRectMake(0, 57, 320, 198);
+        if([tvText isFirstResponder])
+            [tvText setFrame: reducedSize];
+        else
+            [tvText setFrame: fullSize];
+    }
+    else
+    {
+        fullSize = CGRectMake(0, 57, 480, 184);
+        reducedSize = CGRectMake(0, 57, 480, 83);
+        if([tvText isFirstResponder])
+            [tvText setFrame: reducedSize];
+        else
+            [tvText setFrame: fullSize];
+    }
+    NSLog(@"%f %f %f %f", tvText.bounds.origin.x, tvText.bounds.origin.y, tvText.bounds.size.width, tvText.bounds.size.height);
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
@@ -124,12 +145,12 @@
 //Resize when beginninge/ending edit
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [textView setFrame:CGRectMake(0, 57, 320, 198)];
+    [textView setFrame: reducedSize];
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
-    [textView setFrame:CGRectMake(0, 57, 320, 344)];
+    [textView setFrame: fullSize];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range 
