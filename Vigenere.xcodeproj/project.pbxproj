@@ -17,6 +17,8 @@
 		7D9394B914670C8800DD459C /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9394B814670C8800DD459C /* FlipsideViewController.m */; };
 		7D9394BC14670C8800DD459C /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9394BA14670C8800DD459C /* MainViewController.xib */; };
 		7D9394BF14670C8800DD459C /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9394BD14670C8800DD459C /* FlipsideViewController.xib */; };
+		7D9394C714670CE000DD459C /* Vigenere.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9394C614670CE000DD459C /* Vigenere.m */; };
+		7DDCED72146722C600243C35 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCED71146722C600243C35 /* TODO.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,18 +26,21 @@
 		7D9394A214670C8700DD459C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7D9394A414670C8700DD459C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7D9394A614670C8700DD459C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		7D9394AA14670C8700DD459C /* Vigenere-Info.plist */ = {isa = PBXFileReference; path = "Vigenere-Info.plist"; sourceTree = "<group>"; };
+		7D9394AA14670C8700DD459C /* Vigenere-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Vigenere-Info.plist"; sourceTree = "<group>"; };
 		7D9394AC14670C8700DD459C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7D9394AE14670C8700DD459C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7D9394B014670C8700DD459C /* Vigenere-Prefix.pch */ = {isa = PBXFileReference; path = "Vigenere-Prefix.pch"; sourceTree = "<group>"; };
-		7D9394B114670C8700DD459C /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		7D9394B014670C8700DD459C /* Vigenere-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vigenere-Prefix.pch"; sourceTree = "<group>"; };
+		7D9394B114670C8700DD459C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7D9394B214670C8700DD459C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7D9394B414670C8700DD459C /* MainViewController.h */ = {isa = PBXFileReference; path = MainViewController.h; sourceTree = "<group>"; };
+		7D9394B414670C8700DD459C /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		7D9394B514670C8700DD459C /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		7D9394B714670C8700DD459C /* FlipsideViewController.h */ = {isa = PBXFileReference; path = FlipsideViewController.h; sourceTree = "<group>"; };
+		7D9394B714670C8700DD459C /* FlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
 		7D9394B814670C8800DD459C /* FlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
 		7D9394BB14670C8800DD459C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController.xib; sourceTree = "<group>"; };
 		7D9394BE14670C8800DD459C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FlipsideViewController.xib; sourceTree = "<group>"; };
+		7D9394C514670CE000DD459C /* Vigenere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vigenere.h; sourceTree = "<group>"; };
+		7D9394C614670CE000DD459C /* Vigenere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vigenere.m; sourceTree = "<group>"; };
+		7DDCED71146722C600243C35 /* TODO.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,13 +87,15 @@
 		7D9394A814670C8700DD459C /* Vigenere */ = {
 			isa = PBXGroup;
 			children = (
+				7D9394C514670CE000DD459C /* Vigenere.h */,
+				7D9394C614670CE000DD459C /* Vigenere.m */,
 				7D9394B114670C8700DD459C /* AppDelegate.h */,
 				7D9394B214670C8700DD459C /* AppDelegate.m */,
 				7D9394B414670C8700DD459C /* MainViewController.h */,
 				7D9394B514670C8700DD459C /* MainViewController.m */,
+				7D9394BA14670C8800DD459C /* MainViewController.xib */,
 				7D9394B714670C8700DD459C /* FlipsideViewController.h */,
 				7D9394B814670C8800DD459C /* FlipsideViewController.m */,
-				7D9394BA14670C8800DD459C /* MainViewController.xib */,
 				7D9394BD14670C8800DD459C /* FlipsideViewController.xib */,
 				7D9394A914670C8700DD459C /* Supporting Files */,
 			);
@@ -98,6 +105,7 @@
 		7D9394A914670C8700DD459C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7DDCED71146722C600243C35 /* TODO.rtf */,
 				7D9394AA14670C8700DD459C /* Vigenere-Info.plist */,
 				7D9394AB14670C8700DD459C /* InfoPlist.strings */,
 				7D9394AE14670C8700DD459C /* main.m */,
@@ -116,6 +124,7 @@
 				7D93949A14670C8700DD459C /* Sources */,
 				7D93949B14670C8700DD459C /* Frameworks */,
 				7D93949C14670C8700DD459C /* Resources */,
+				7DDCED61146712E700243C35 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -160,10 +169,27 @@
 				7D9394AD14670C8700DD459C /* InfoPlist.strings in Resources */,
 				7D9394BC14670C8800DD459C /* MainViewController.xib in Resources */,
 				7D9394BF14670C8800DD459C /* FlipsideViewController.xib in Resources */,
+				7DDCED72146722C600243C35 /* TODO.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7DDCED61146712E700243C35 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"iphoneos\" ]; then\n/Developer/iphoneentitlements401/gen_entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7D93949A14670C8700DD459C /* Sources */ = {
@@ -174,6 +200,7 @@
 				7D9394B314670C8700DD459C /* AppDelegate.m in Sources */,
 				7D9394B614670C8700DD459C /* MainViewController.m in Sources */,
 				7D9394B914670C8800DD459C /* FlipsideViewController.m in Sources */,
+				7D9394C714670CE000DD459C /* Vigenere.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +253,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -243,7 +270,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -253,9 +280,11 @@
 		7D9394C314670C8800DD459C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vigenere/Vigenere-Prefix.pch";
 				INFOPLIST_FILE = "Vigenere/Vigenere-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -264,9 +293,11 @@
 		7D9394C414670C8800DD459C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vigenere/Vigenere-Prefix.pch";
 				INFOPLIST_FILE = "Vigenere/Vigenere-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -291,6 +322,7 @@
 				7D9394C414670C8800DD459C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

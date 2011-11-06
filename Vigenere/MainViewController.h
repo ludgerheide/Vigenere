@@ -7,9 +7,20 @@
 //
 
 #import "FlipsideViewController.h"
+@class Vigenere;
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate>
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate>
+
+@property (strong) Vigenere *vigenere;
+@property NSInteger mode;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UITextView *tvText;
+@property (unsafe_unretained, nonatomic) IBOutlet UITextField *tfKey;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *buProcess;
+@property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *scMode;
 
 - (IBAction)showInfo:(id)sender;
+- (IBAction)process:(id)sender;
+- (IBAction)changeMode:(id)sender;
 
 @end
