@@ -89,23 +89,34 @@
 
 - (IBAction)process:(id)sender
 {
-    if(mode == 0)
+    NSString *input = tvText.text;
+    NSString *key = tfKey.text;
+    
+    //Check for empty key (which would crash the app
+    if([key isEqualToString: @""])
     {
-        NSString *input = tvText.text;
-        NSString *key = tfKey.text;
+        UIAlertView *noKey = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"No key!", nil)
+                                                        message: NSLocalizedString(@"Please enter a valid key before encrypting or decrypting", nil)
+                                                       delegate: self
+                                              cancelButtonTitle: @"Go back"
+                                              otherButtonTitles: nil];
+        [noKey show];
+        return;
+    }
+    
+    if(mode == 0) //Check whether we want to encrypt or decrypt
         tvText.text = [vigenere encryptText: input withKey: key];
-    }
     else
-    {
-        NSString *input = tvText.text;
-        NSString *key = tfKey.text;
         tvText.text = [vigenere decryptText: input withKey: key];
-    }
 }
 
 - (IBAction)changeMode:(id)sender
 {
     mode = scMode.selectedSegmentIndex;
+    if(mode == 0)
+        [buProcess setTitle: NSLocalizedString(@"Encrypt", nil) forState:UIControlStateNormal];
+    else
+        [buProcess setTitle: NSLocalizedString(@"Decrypt", nil) forState:UIControlStateNormal];
 }
 
 //Methods for Handling the text view
@@ -138,7 +149,6 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"textFieldShouldReturn");
     [textField resignFirstResponder];
     [self process: nil];
     return YES;

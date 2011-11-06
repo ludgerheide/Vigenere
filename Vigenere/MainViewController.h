@@ -9,7 +9,7 @@
 #import "FlipsideViewController.h"
 @class Vigenere;
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate>
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate, UIAlertViewDelegate>
 
 @property (strong) Vigenere *vigenere;
 @property NSInteger mode;
