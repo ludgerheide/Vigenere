@@ -106,7 +106,6 @@
 - (IBAction)changeMode:(id)sender
 {
     mode = scMode.selectedSegmentIndex;
-    NSLog(@"%i", mode);
 }
 
 //Methods for Handling the text view
@@ -119,7 +118,7 @@
 
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
-    [textView setFrame:CGRectMake(0, 57, 320, 332)];
+    [textView setFrame:CGRectMake(0, 57, 320, 344)];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range 
