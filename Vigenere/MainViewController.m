@@ -150,7 +150,6 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    [self process: nil];
     return YES;
 }
 
