@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D92D9BB14674C9B00A37A9D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D92D9BA14674C9B00A37A9D /* Default.png */; };
+		7D92D9BD1467509400A37A9D /* bild.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D92D9BC1467509400A37A9D /* bild.png */; };
 		7D9394A314670C8700DD459C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9394A214670C8700DD459C /* UIKit.framework */; };
 		7D9394A514670C8700DD459C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9394A414670C8700DD459C /* Foundation.framework */; };
 		7D9394A714670C8700DD459C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9394A614670C8700DD459C /* CoreGraphics.framework */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D92D9BA14674C9B00A37A9D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		7D92D9BC1467509400A37A9D /* bild.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bild.png; path = ../bild.png; sourceTree = "<group>"; };
 		7D93949E14670C8700DD459C /* Vigenere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vigenere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9394A214670C8700DD459C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7D9394A414670C8700DD459C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -105,11 +109,13 @@
 		7D9394A914670C8700DD459C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7D92D9BC1467509400A37A9D /* bild.png */,
 				7DDCED71146722C600243C35 /* TODO.rtf */,
 				7D9394AA14670C8700DD459C /* Vigenere-Info.plist */,
 				7D9394AB14670C8700DD459C /* InfoPlist.strings */,
 				7D9394AE14670C8700DD459C /* main.m */,
 				7D9394B014670C8700DD459C /* Vigenere-Prefix.pch */,
+				7D92D9BA14674C9B00A37A9D /* Default.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -170,6 +176,8 @@
 				7D9394BC14670C8800DD459C /* MainViewController.xib in Resources */,
 				7D9394BF14670C8800DD459C /* FlipsideViewController.xib in Resources */,
 				7DDCED72146722C600243C35 /* TODO.rtf in Resources */,
+				7D92D9BB14674C9B00A37A9D /* Default.png in Resources */,
+				7D92D9BD1467509400A37A9D /* bild.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
