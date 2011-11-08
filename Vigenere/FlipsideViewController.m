@@ -84,6 +84,21 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
+    if(interfaceOrientation == UIInterfaceOrientationPortrait)
+    {
+        //Enable the text fields since they don't ibscure the keyboard anymore
+        tfFirstChar.enabled = YES;
+        tfLastChar.enabled = YES;
+        tfUnknownChar.enabled = YES;
+    }
+    else
+    {
+        //Disable the text fields since they will be obscured (a scroll view would be nicer)
+        tfFirstChar.enabled = NO;
+        tfLastChar.enabled = NO;
+        tfUnknownChar.enabled = NO;
+    }
+
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
