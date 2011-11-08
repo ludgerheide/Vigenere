@@ -97,6 +97,11 @@
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller
 {
+    //Send our vigenere instance the new cyphertext alphabet
+    vigenere.firstChar = controller.firstChar;
+    vigenere.lastChar = controller.lastChar;
+    vigenere.unknownChar = controller.unknownChar;
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -105,6 +110,12 @@
     FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
     controller.delegate = self;
     controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    //Send the controller our current cyphertext alphabet definitions
+    controller.firstChar = vigenere.firstChar;
+    controller.lastChar = vigenere.lastChar;
+    controller.unknownChar = vigenere.unknownChar;
+    
     [self presentModalViewController:controller animated:YES];
 }
 

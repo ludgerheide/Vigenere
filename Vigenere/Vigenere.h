@@ -15,7 +15,7 @@
 }
 
 @property(nonatomic) short firstChar;
-@property(nonatomic) short lastChar; //lastChar is not within the alphabet, it is the first character outside!!!
+@property(nonatomic) short lastChar; //lastChar IS within the alphabet
 @property(nonatomic) short unknownChar;
 
 -(BOOL)canDecypher: (NSString *)text;

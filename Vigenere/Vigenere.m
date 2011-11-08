@@ -13,7 +13,7 @@
 
 //Variables
 @synthesize firstChar;
-@synthesize lastChar; //lastChar is not within the alphabet, it is the first character outside!!!
+@synthesize lastChar; //lastChar IS within the alphabet
 @synthesize unknownChar;
 
 -(BOOL)canDecypher:(NSString *)text
@@ -25,7 +25,7 @@
     for(i = 0; i < text.length; i++)
 	{
 		character = [text characterAtIndex: i];
-		if((character < firstChar) || (character >= lastChar))
+		if((character < firstChar) || (character >= (lastChar +1)))
             return NO;
     }
     return YES;
@@ -41,7 +41,7 @@
     for(i = 0; i < text.length; i++)
 	{
 		character = [text characterAtIndex: i];
-		if((character < firstChar) || (character >= lastChar))
+		if((character < firstChar) || (character >= (lastChar +1)))
             [result appendFormat: @"%c", unknownChar];
         else
             [result appendFormat: @"%c", character];
@@ -54,28 +54,25 @@
 	//Variables
 	NSUInteger i;
 	short clearChar, keyChar, cypherChar;
-	
-    cleartext = [cleartext uppercaseString];
-    key = [key uppercaseString];
     
 	NSMutableString *result = [[NSMutableString alloc] init];
 	
 	for(i = 0; i < cleartext.length; i++)
 	{
 		clearChar = [cleartext characterAtIndex: i];
-		if((clearChar < firstChar) || (clearChar >= lastChar))
+		if((clearChar < firstChar) || (clearChar >= (lastChar +1)))
 			clearChar = unknownChar;
 		//NSLog(@"%c", clearChar);
 		
         keyChar = [key characterAtIndex: ((i + key.length) % key.length)];
-		if((keyChar < firstChar) || (keyChar >= lastChar))
+		if((keyChar < firstChar) || (keyChar >= (lastChar +1)))
 			keyChar = unknownChar;
 		//NSLog(@"%c", keyChar);
 		
 		cypherChar = clearChar + (keyChar - firstChar);
 		
-        if(cypherChar >= lastChar)
-			cypherChar = cypherChar - (lastChar - firstChar);
+        if(cypherChar >= (lastChar +1))
+			cypherChar = cypherChar - ((lastChar +1) - firstChar);
 		//NSLog(@"%c", cypherChar);
 		
 		[result appendFormat: @"%c", cypherChar];
@@ -87,15 +84,13 @@
 {
 	NSUInteger i;
 	short clearChar, keyChar, cypherChar;
-	
-    key = [key uppercaseString];
     
 	NSMutableString *result = [[NSMutableString alloc] init];
 	
 	for(i = 0; i < cyphertext.length; i++)
 	{
 		cypherChar = [cyphertext characterAtIndex: i];
-		if((cypherChar < firstChar) || (cypherChar >= lastChar))
+		if((cypherChar < firstChar) || (cypherChar >= (lastChar +1)))
         {
             [result appendFormat: @"#"];
             break;
@@ -103,14 +98,14 @@
 		//NSLog(@"%c", cypherChar);
 		
 		keyChar = [key characterAtIndex: ((i + key.length) % key.length)];
-		if((keyChar < firstChar) || (keyChar >= lastChar))
+		if((keyChar < firstChar) || (keyChar >= (lastChar +1)))
 			keyChar = unknownChar;
 		//NSLog(@"%c", keyChar);
 		
 		clearChar = cypherChar - (keyChar - firstChar);
 		
         if(clearChar < firstChar)
-			clearChar = clearChar + (lastChar - firstChar);
+			clearChar = clearChar + ((lastChar +1) - firstChar);
 		//NSLog(@"%c", clearChar);
 		
 		[result appendFormat: @"%c", clearChar];
@@ -137,7 +132,7 @@
 
 -(id)init
 {
-    return [self initWithfirstChar: 33 lastChar: 91 unknownChar: 35];
+    return [self initWithfirstChar: 33 lastChar: 90 unknownChar: 35];
 }
 
 @end
