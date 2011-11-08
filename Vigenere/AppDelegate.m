@@ -20,6 +20,14 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    //Register the standard defaults
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithShort: 33], @"firstChar",
+                                                                            [NSNumber numberWithShort: 90], @"lastChar",
+                                                                            [NSNumber numberWithShort: 35], @"unknownChar",
+                                                                            nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    
     self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];

@@ -33,7 +33,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.vigenere = [[Vigenere alloc] init];
+    
+    //Load the characters from our preferences
+    short firstChar, lastChar, unknownChar;
+    
+    firstChar = [[[NSUserDefaults standardUserDefaults] objectForKey: @"firstChar"] shortValue];
+    lastChar = [[[NSUserDefaults standardUserDefaults] objectForKey: @"lastChar"] shortValue];
+    unknownChar = [[[NSUserDefaults standardUserDefaults] objectForKey: @"unknownChar"] shortValue];
+    
+    //Initialize vigenere with them
+    vigenere = [[Vigenere alloc] initWithfirstChar: firstChar lastChar: lastChar unknownChar: unknownChar];
 }
 
 - (void)viewDidUnload
@@ -97,6 +106,11 @@
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller
 {
+    //Write our new values to the User defaults
+    [[NSUserDefaults standardUserDefaults] setValue: [NSNumber numberWithShort: controller.firstChar] forKey: @"firstChar"];
+    [[NSUserDefaults standardUserDefaults] setValue: [NSNumber numberWithShort: controller.lastChar] forKey: @"lastChar"];
+    [[NSUserDefaults standardUserDefaults] setValue: [NSNumber numberWithShort: controller.unknownChar] forKey: @"unknownChar"];
+    
     //Send our vigenere instance the new cyphertext alphabet
     vigenere.firstChar = controller.firstChar;
     vigenere.lastChar = controller.lastChar;

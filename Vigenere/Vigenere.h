@@ -25,4 +25,6 @@
 -(NSString *)decryptAutomatically: (NSString *)cyphertext
                     withKeyLength: (NSInteger)keyLength;
 
+-(id)initWithfirstChar: (short)fChar lastChar: (short)lChar unknownChar: (short)uChar;
+
 @end
