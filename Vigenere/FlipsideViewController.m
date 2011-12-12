@@ -86,10 +86,15 @@
     // Return YES for supported orientations
     if(interfaceOrientation == UIInterfaceOrientationPortrait)
     {
-        //Enable the text fields since they don't ibscure the keyboard anymore
+        //Enable the text fields since they don't obscure the keyboard anymore
         tfFirstChar.enabled = YES;
         tfLastChar.enabled = YES;
         tfUnknownChar.enabled = YES;
+        
+        //Make the text black to tell the user
+        tfFirstChar.textColor = [UIColor blackColor];
+        tfLastChar.textColor = [UIColor blackColor];
+        tfUnknownChar.textColor = [UIColor blackColor];
     }
     else
     {
@@ -97,6 +102,11 @@
         tfFirstChar.enabled = NO;
         tfLastChar.enabled = NO;
         tfUnknownChar.enabled = NO;
+        
+        //Grey them out to tell the user
+        tfFirstChar.textColor = [UIColor grayColor];
+        tfLastChar.textColor = [UIColor grayColor];
+        tfUnknownChar.textColor = [UIColor grayColor];
     }
 
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
