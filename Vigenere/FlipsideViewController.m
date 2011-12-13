@@ -247,7 +247,14 @@
 
 - (IBAction)done:(id)sender
 {
-    [self.delegate flipsideViewControllerDidFinish:self];
+    if((tfFirstChar.isFirstResponder) || (tfLastChar.isFirstResponder == NO) || (tfUnknownChar.isFirstResponder == NO))
+    {
+        [tfFirstChar resignFirstResponder];
+        [tfLastChar resignFirstResponder];
+        [tfUnknownChar resignFirstResponder];
+    }
+    else
+        [self.delegate flipsideViewControllerDidFinish:self];
 }
 
 @end
