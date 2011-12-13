@@ -16,6 +16,9 @@
 @synthesize fullSize;
 @synthesize reducedSize;
 
+@synthesize upperCase;
+@synthesize lowerCase;
+
 @synthesize tvText;
 @synthesize tfKey;
 @synthesize buProcess;
@@ -40,6 +43,10 @@
     firstChar = [[[NSUserDefaults standardUserDefaults] objectForKey: @"firstChar"] shortValue];
     lastChar = [[[NSUserDefaults standardUserDefaults] objectForKey: @"lastChar"] shortValue];
     unknownChar = [[[NSUserDefaults standardUserDefaults] objectForKey: @"unknownChar"] shortValue];
+    
+    //Load the conversion to upper/lowercase presets
+    upperCase = [[[NSUserDefaults standardUserDefaults] objectForKey: @"upperCase"] boolValue];
+    lowerCase = [[[NSUserDefaults standardUserDefaults] objectForKey: @"lowerCase"] boolValue];
     
     //Initialize vigenere with them
     vigenere = [[Vigenere alloc] initWithfirstChar: firstChar lastChar: lastChar unknownChar: unknownChar];
@@ -111,10 +118,18 @@
     [[NSUserDefaults standardUserDefaults] setValue: [NSNumber numberWithShort: controller.lastChar] forKey: @"lastChar"];
     [[NSUserDefaults standardUserDefaults] setValue: [NSNumber numberWithShort: controller.unknownChar] forKey: @"unknownChar"];
     
+    //Write our upper/lowercase preset to User defaults
+    [[NSUserDefaults standardUserDefaults] setValue: [NSNumber numberWithBool: controller.swUpperCase.on] forKey: @"upperCase"];
+    [[NSUserDefaults standardUserDefaults] setValue: [NSNumber numberWithBool: controller.swLowerCase.on] forKey: @"lowerCase"];
+    
     //Send our vigenere instance the new cyphertext alphabet
     vigenere.firstChar = controller.firstChar;
     vigenere.lastChar = controller.lastChar;
     vigenere.unknownChar = controller.unknownChar;
+    
+    //Set our upper/lowercase preference in this instance
+    upperCase = controller.swUpperCase.on;
+    lowerCase = controller.swLowerCase.on;
     
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -131,6 +146,10 @@
     controller.unknownChar = vigenere.unknownChar;
     
     [self presentModalViewController:controller animated:YES];
+    
+    //Send the controller our upper/lowercase preferences
+    controller.swUpperCase.on = upperCase;
+    controller.swLowerCase.on = lowerCase;
 }
 
 - (IBAction)process:(id)sender
@@ -151,9 +170,31 @@
     }
     
     if(mode == 0) //Check whether we want to encrypt or decrypt
+    {
+        //Check whether we should convert to upper/lowercase before encrypting
+        if(upperCase == YES)
+        {
+            key = [key uppercaseString];
+            input = [input uppercaseString];
+        }
+        else if(lowerCase == YES)
+        {
+            key = [key uppercaseString];
+            input = [input lowercaseString];
+        }
+        
         tvText.text = [vigenere encryptText: input withKey: key];
+    }
     else
+    {
+        //WHen decrypting we should already have a correctly formatted cyphertext. All we have to do is put the key in the correct case.
+        if(upperCase == YES)
+            key = [key uppercaseString];
+        else if(lowerCase == YES)
+            key = [key uppercaseString];
+    
         tvText.text = [vigenere decryptText: input withKey: key];
+    }
 }
 
 - (IBAction)changeMode:(id)sender

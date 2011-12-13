@@ -16,6 +16,8 @@
 @property CGRect fullSize;
 @property CGRect reducedSize;
 
+@property BOOL upperCase;
+@property BOOL lowerCase;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UITextView *tvText;
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *tfKey;

@@ -25,6 +25,8 @@
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithShort: 33], @"firstChar",
                                                                             [NSNumber numberWithShort: 90], @"lastChar",
                                                                             [NSNumber numberWithShort: 35], @"unknownChar",
+                                                                            [NSNumber numberWithBool: NO], @"upperCase",
+                                                                            [NSNumber numberWithBool: NO], @"lowerCase",
                                                                             nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
     

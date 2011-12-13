@@ -27,14 +27,16 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *tfLastChar;
 @property (unsafe_unretained, nonatomic) IBOutlet UISlider *slUnknownChar;
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *tfUnknownChar;
+@property (unsafe_unretained, nonatomic) IBOutlet UISwitch *swUpperCase;
+@property (unsafe_unretained, nonatomic) IBOutlet UISwitch *swLowerCase;
 
 - (IBAction)sliderChanged:(id)sender;
 - (IBAction)textfieldChanged:(id)sender;
+- (IBAction)switchChanged:(id)sender;
+- (IBAction)done:(id)sender;
 
 -(void)setFirstCharAndSlider:(short)fChar;
 -(void)setLastCharAndSlider:(short)lChar;
 -(void)setUnknownCharAndSlider:(short)uChar;
-
-- (IBAction)done:(id)sender;
 
 @end

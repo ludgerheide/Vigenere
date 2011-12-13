@@ -24,6 +24,8 @@
 @synthesize tfLastChar;
 @synthesize slUnknownChar;
 @synthesize tfUnknownChar;
+@synthesize swUpperCase;
+@synthesize swLowerCase;
 
 - (void)didReceiveMemoryWarning
 {
@@ -47,6 +49,8 @@
     [self setTfFirstChar:nil];
     [self setTfLastChar:nil];
     [self setTfUnknownChar:nil];
+    [self setSwUpperCase:nil];
+    [self setSwLowerCase:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -231,6 +235,14 @@
         else
             [invalidCharAlert show];
     }
+}
+
+- (IBAction)switchChanged:(id)sender
+{
+    if(sender == swUpperCase)
+        swLowerCase.on = NO;
+    else if(sender == swLowerCase)
+        swUpperCase.on = NO;
 }
 
 - (IBAction)done:(id)sender
