@@ -247,7 +247,7 @@
 
 - (IBAction)done:(id)sender
 {
-    if((tfFirstChar.isFirstResponder) || (tfLastChar.isFirstResponder == NO) || (tfUnknownChar.isFirstResponder == NO))
+    if((tfFirstChar.isFirstResponder) || (tfLastChar.isFirstResponder) || (tfUnknownChar.isFirstResponder))
     {
         [tfFirstChar resignFirstResponder];
         [tfLastChar resignFirstResponder];
