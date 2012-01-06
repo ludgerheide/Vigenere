@@ -21,6 +21,7 @@
 		7D9394BC14670C8800DD459C /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9394BA14670C8800DD459C /* MainViewController.xib */; };
 		7D9394BF14670C8800DD459C /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9394BD14670C8800DD459C /* FlipsideViewController.xib */; };
 		7D9394C714670CE000DD459C /* Vigenere.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9394C614670CE000DD459C /* Vigenere.m */; };
+		7DB0139414B77C60007917C0 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = 7DB0139314B77C60007917C0 /* COPYING */; };
 		7DDCED72146722C600243C35 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCED71146722C600243C35 /* TODO.rtf */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		7D9394BE14670C8800DD459C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FlipsideViewController.xib; sourceTree = "<group>"; };
 		7D9394C514670CE000DD459C /* Vigenere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vigenere.h; sourceTree = "<group>"; };
 		7D9394C614670CE000DD459C /* Vigenere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vigenere.m; sourceTree = "<group>"; };
+		7DB0139314B77C60007917C0 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		7DDCED71146722C600243C35 /* TODO.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 		7D9394A914670C8700DD459C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7DB0139314B77C60007917C0 /* COPYING */,
 				7D82BC9A149A037E0062477F /* Localizable.strings */,
 				7D92D9BC1467509400A37A9D /* bild.png */,
 				7D82BC9E149A03950062477F /* Default.png */,
@@ -187,6 +190,7 @@
 				7D92D9BD1467509400A37A9D /* bild.png in Resources */,
 				7D82BC9C149A03950062477F /* Default.png in Resources */,
 				7D82BC98149A037E0062477F /* Localizable.strings in Resources */,
+				7DB0139414B77C60007917C0 /* COPYING in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
