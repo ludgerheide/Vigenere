@@ -22,6 +22,7 @@
 		7D9394BF14670C8800DD459C /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9394BD14670C8800DD459C /* FlipsideViewController.xib */; };
 		7D9394C714670CE000DD459C /* Vigenere.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9394C614670CE000DD459C /* Vigenere.m */; };
 		7DB0139414B77C60007917C0 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = 7DB0139314B77C60007917C0 /* COPYING */; };
+		7DC0E8B114BDFBEC008BC9EF /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0E8B014BDFBEC008BC9EF /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		7DDCED72146722C600243C35 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCED71146722C600243C35 /* TODO.rtf */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,8 @@
 		7D9394C514670CE000DD459C /* Vigenere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vigenere.h; sourceTree = "<group>"; };
 		7D9394C614670CE000DD459C /* Vigenere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vigenere.m; sourceTree = "<group>"; };
 		7DB0139314B77C60007917C0 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		7DC0E8AF14BDFBEC008BC9EF /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		7DC0E8B014BDFBEC008BC9EF /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		7DDCED71146722C600243C35 /* TODO.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +102,8 @@
 		7D9394A814670C8700DD459C /* Vigenere */ = {
 			isa = PBXGroup;
 			children = (
+				7DC0E8AF14BDFBEC008BC9EF /* NSData+Base64.h */,
+				7DC0E8B014BDFBEC008BC9EF /* NSData+Base64.m */,
 				7D9394C514670CE000DD459C /* Vigenere.h */,
 				7D9394C614670CE000DD459C /* Vigenere.m */,
 				7D9394B114670C8700DD459C /* AppDelegate.h */,
@@ -222,6 +227,7 @@
 				7D9394B614670C8700DD459C /* MainViewController.m in Sources */,
 				7D9394B914670C8800DD459C /* FlipsideViewController.m in Sources */,
 				7D9394C714670CE000DD459C /* Vigenere.m in Sources */,
+				7DC0E8B114BDFBEC008BC9EF /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

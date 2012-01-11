@@ -10,6 +10,9 @@
  * To Public License, Version 2, as published by Sam Hocevar. See
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
 
+#define FIRST_BASE64 65
+#define LAST_BASE64 92
+
 #import "Vigenere.h"
 
 @implementation Vigenere
@@ -115,7 +118,61 @@
 	}
 	return result;
 }
- 
+
+-(NSData *)encryptData: (NSData *)cleardata withKey: (NSData *)key
+{
+    //Save the old boundaries
+    short oldFirstChar = firstChar;
+    short oldLastChar = lastChar;
+    
+    //Change the boundaries to the Base64 boundaries
+    firstChar = FIRST_BASE64;
+    lastChar = LAST_BASE64;
+    
+    //Create the Base64 equivalent of our data and key
+    NSString *cleartext = [cleardata base64EncodedString];
+    NSString *keyString = [key base64EncodedString];
+    
+    //Encrypt the string
+    NSString *cyphertext = [self encryptText: cleartext withKey: keyString];
+    
+    //Turn the Text back into NSData
+    NSData *result = [NSData dataFromBase64String: cyphertext];
+    
+    //Reset the old boundaries
+    firstChar = oldFirstChar;
+    lastChar = oldLastChar;
+    
+    return result;
+}
+
+-(NSData *)decryptData: (NSData *)cypherdata withKey: (NSData *)key
+{
+    //Save the old boundaries
+    short oldFirstChar = firstChar;
+    short oldLastChar = lastChar;
+    
+    //Change the boundaries to the Base64 boundaries
+    firstChar = FIRST_BASE64;
+    lastChar = LAST_BASE64;
+    
+    //Create the Base64 equivalent of our data and key
+    NSString *cyphertext = [cypherdata base64EncodedString];
+    NSString *keyString = [key base64EncodedString];
+    
+    //Decrypt the string
+    NSString *cleartext = [self decryptText: cyphertext withKey: keyString];
+    
+    //Turn the Text back into NSData
+    NSData *result = [NSData dataFromBase64String: cleartext];
+    
+    //Reset the old boundaries
+    firstChar = oldFirstChar;
+    lastChar = oldLastChar;
+    
+    return result;
+}
+
 -(NSString *)decryptAutomatically: (NSString *)cyphertext withKeyLength: (NSInteger)keyLength
 {
     return @"Not quite ready";

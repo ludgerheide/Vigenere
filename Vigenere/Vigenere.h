@@ -11,6 +11,7 @@
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
 
 #import <Foundation/Foundation.h>
+#import "NSData+Base64.h"
 
 @interface Vigenere : NSObject
 {
@@ -25,6 +26,8 @@
 -(NSString *)makeDecypherable: (NSString *)text;
 -(NSString *)encryptText: (NSString *)cleartext withKey: (NSString *)key;
 -(NSString *)decryptText: (NSString *)cyphertext withKey: (NSString *)key;
+-(NSData *)encryptData: (NSData *)cleardata withKey: (NSData *)key;
+-(NSData *)decryptData: (NSData *)cypherdata withKey: (NSData *)key;
 -(NSString *)decryptAutomatically: (NSString *)cyphertext
                     withKeyLength: (NSInteger)keyLength; //This is not guaranteed to return a correct result.
 
