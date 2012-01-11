@@ -12,9 +12,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import <Foundation/Foundation.h>
-
-
 @interface Vigenere : NSObject
 {
 	short firstChar, lastChar, unknownChar;
@@ -29,7 +26,7 @@
 -(NSString *)encryptText: (NSString *)cleartext withKey: (NSString *)key;
 -(NSString *)decryptText: (NSString *)cyphertext withKey: (NSString *)key;
 -(NSString *)decryptAutomatically: (NSString *)cyphertext
-                    withKeyLength: (NSInteger)keyLength;
+                    withKeyLength: (NSInteger)keyLength; //This is not guaranteed to return a correct result.
 
 -(id)initWithfirstChar: (short)fChar lastChar: (short)lChar unknownChar: (short)uChar;
 

@@ -12,7 +12,6 @@
 
 #import "Vigenere.h"
 
-
 @implementation Vigenere
 
 //Variables
@@ -29,7 +28,7 @@
     for(i = 0; i < text.length; i++)
 	{
 		character = [text characterAtIndex: i];
-		if((character < firstChar) || (character >= (lastChar +1)))
+		if((character < firstChar) || (character > lastChar))
             return NO;
     }
     return YES;
@@ -45,7 +44,7 @@
     for(i = 0; i < text.length; i++)
 	{
 		character = [text characterAtIndex: i];
-		if((character < firstChar) || (character >= (lastChar +1)))
+		if((character < firstChar) || (character > lastChar))
             [result appendFormat: @"%c", unknownChar];
         else
             [result appendFormat: @"%c", character];
@@ -64,19 +63,19 @@
 	for(i = 0; i < cleartext.length; i++)
 	{
 		clearChar = [cleartext characterAtIndex: i];
-		if((clearChar < firstChar) || (clearChar >= (lastChar +1)))
+		if((clearChar < firstChar) || (clearChar > lastChar))
 			clearChar = unknownChar;
 		//NSLog(@"%c", clearChar);
 		
         keyChar = [key characterAtIndex: ((i + key.length) % key.length)];
-		if((keyChar < firstChar) || (keyChar >= (lastChar +1)))
+		if((keyChar < firstChar) || (keyChar > lastChar))
 			keyChar = unknownChar;
 		//NSLog(@"%c", keyChar);
 		
 		cypherChar = clearChar + (keyChar - firstChar);
 		
-        if(cypherChar >= (lastChar +1))
-			cypherChar = cypherChar - ((lastChar +1) - firstChar);
+        if(cypherChar > lastChar)
+			cypherChar = cypherChar - ((lastChar +1) - firstChar);  //If we are outside the alphabet, subtract alphabet size.
 		//NSLog(@"%c", cypherChar);
 		
 		[result appendFormat: @"%c", cypherChar];
@@ -94,7 +93,7 @@
 	for(i = 0; i < cyphertext.length; i++)
 	{
 		cypherChar = [cyphertext characterAtIndex: i];
-		if((cypherChar < firstChar) || (cypherChar >= (lastChar +1)))
+		if((cypherChar < firstChar) || (cypherChar > lastChar))
         {
             [result appendFormat: @"#"];
             break;
@@ -102,14 +101,14 @@
 		//NSLog(@"%c", cypherChar);
 		
 		keyChar = [key characterAtIndex: ((i + key.length) % key.length)];
-		if((keyChar < firstChar) || (keyChar >= (lastChar +1)))
+		if((keyChar < firstChar) || (keyChar > lastChar))
 			keyChar = unknownChar;
 		//NSLog(@"%c", keyChar);
 		
 		clearChar = cypherChar - (keyChar - firstChar);
 		
         if(clearChar < firstChar)
-			clearChar = clearChar + ((lastChar +1) - firstChar);
+			clearChar = clearChar + ((lastChar +1) - firstChar);    //If we are outside the alphabet, add alphabet size.
 		//NSLog(@"%c", clearChar);
 		
 		[result appendFormat: @"%c", clearChar];
