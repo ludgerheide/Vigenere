@@ -121,55 +121,49 @@
 
 -(NSData *)encryptData: (NSData *)cleardata withKey: (NSData *)key
 {
-    //Save the old boundaries
-    short oldFirstChar = firstChar;
-    short oldLastChar = lastChar;
+    NSUInteger i;
+    Byte clearByte, keyByte, cypherByte;
+    const char *clearBuffer, *keyBuffer;
+    unsigned char cypherBuffer[cleardata.length];
     
-    //Change the boundaries to the Base64 boundaries
-    firstChar = FIRST_BASE64;
-    lastChar = LAST_BASE64;
+    clearBuffer = (const char *)[cleardata bytes];
+    keyBuffer = (const char *)[key bytes];
     
-    //Create the Base64 equivalent of our data and key
-    NSString *cleartext = [cleardata base64EncodedString];
-    NSString *keyString = [key base64EncodedString];
+    for(i = 0; i < cleardata.length; i++)
+    {
+        clearByte = clearBuffer[i];
+        keyByte = keyBuffer[((i + key.length) % key.length)];
+        
+        cypherByte = clearByte + keyByte;
+        
+        cypherBuffer[i] = cypherByte;
+    }
     
-    //Encrypt the string
-    NSString *cyphertext = [self encryptText: cleartext withKey: keyString];
-    
-    //Turn the Text back into NSData
-    NSData *result = [NSData dataFromBase64String: cyphertext];
-    
-    //Reset the old boundaries
-    firstChar = oldFirstChar;
-    lastChar = oldLastChar;
-    
+    NSData *result = [NSData dataWithBytes: cypherBuffer length: cleardata.length];
     return result;
+    
 }
 
 -(NSData *)decryptData: (NSData *)cypherdata withKey: (NSData *)key
 {
-    //Save the old boundaries
-    short oldFirstChar = firstChar;
-    short oldLastChar = lastChar;
+    NSUInteger i;
+    Byte clearByte, keyByte, cypherByte;
+    const char *cypherBuffer, *keyBuffer;
+    unsigned char clearBuffer[cypherdata.length];
     
-    //Change the boundaries to the Base64 boundaries
-    firstChar = FIRST_BASE64;
-    lastChar = LAST_BASE64;
+    cypherBuffer = (const char *)[cypherdata bytes];
+    keyBuffer = (const char *)[key bytes];
     
-    //Create the Base64 equivalent of our data and key
-    NSString *cyphertext = [cypherdata base64EncodedString];
-    NSString *keyString = [key base64EncodedString];
-    
-    //Decrypt the string
-    NSString *cleartext = [self decryptText: cyphertext withKey: keyString];
-    
-    //Turn the Text back into NSData
-    NSData *result = [NSData dataFromBase64String: cleartext];
-    
-    //Reset the old boundaries
-    firstChar = oldFirstChar;
-    lastChar = oldLastChar;
-    
+    for(i = 0; i < cypherdata.length; i++)
+    {
+        cypherByte = cypherBuffer[i];
+        keyByte = keyBuffer[((i + key.length) % key.length)];
+        
+        clearByte = cypherByte - keyByte;
+        
+        clearBuffer[i] = clearByte;
+    }
+    NSData *result = [NSData dataWithBytes: clearBuffer length: cypherdata.length];
     return result;
 }
 

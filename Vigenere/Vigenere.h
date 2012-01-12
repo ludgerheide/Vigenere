@@ -11,7 +11,6 @@
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
 
 #import <Foundation/Foundation.h>
-#import "NSData+Base64.h"
 
 @interface Vigenere : NSObject
 {
