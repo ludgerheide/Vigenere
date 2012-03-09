@@ -13,9 +13,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Vigenere : NSObject
-{
-	short firstChar, lastChar, unknownChar;
-}
 
 @property(nonatomic) short firstChar;
 @property(nonatomic) short lastChar; //lastChar IS within the alphabet
