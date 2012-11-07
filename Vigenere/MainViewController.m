@@ -56,8 +56,10 @@
     //Initialize vigenere with them
     vigenere = [[Vigenere alloc] initWithfirstChar: firstChar lastChar: lastChar unknownChar: unknownChar];
     
-    //Initialize the text field bounds since iOS 6 doesn't call rotation at launch anymore
-    [self updateTextViewSizes];
+    //Initialize the text field by obsercing the keyboard size
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    [self updateTextViewSizes: 0];
     [tvText setFrame: fullSize];
 }
 
@@ -68,6 +70,7 @@
     [self setTvText:nil];
     [self setVigenere: nil];
     [self setScMode:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -93,21 +96,34 @@
 	[super viewDidDisappear:animated];
 }
 
-- (void)updateTextViewSizes
+- (void)updateTextViewSizes: (int) keyboardSize
 {
     screenSize = [[UIScreen mainScreen] bounds];
     //Somehow iOS doesn't echange width and height when we rotate, so I have do do it manually
     //Also, we have to compensate for different keyboard sizes
-    int keyBoardCompensation = 294;
+    int keyBoardCompensation = keyboardSize + 78;
     if ([self interfaceOrientation] == UIInterfaceOrientationLandscapeLeft || [self interfaceOrientation] == UIInterfaceOrientationLandscapeRight)
     {
         CGFloat temp = screenSize.size.height;
         screenSize.size.height = screenSize.size.width;
         screenSize.size.width = temp;
-        keyBoardCompensation = 240;
     }
     fullSize = CGRectMake(screenSize.origin.x, (screenSize.origin.y + 57), screenSize.size.width, (screenSize.size.height - 136));
     reducedSize = CGRectMake(screenSize.origin.x, (screenSize.origin.y + 57), screenSize.size.width, (screenSize.size.height - keyBoardCompensation));
+}
+
+- (void) keyboardDidShow:(NSNotification*)notification {
+    CGRect keyboardFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    NSLog(@"keyboard frame raw %@", NSStringFromCGRect(keyboardFrame));
+    if ([self interfaceOrientation] == UIInterfaceOrientationLandscapeLeft || [self interfaceOrientation] == UIInterfaceOrientationLandscapeRight)
+        [self updateTextViewSizes: keyboardFrame.size.width];
+    else
+        [self updateTextViewSizes: keyboardFrame.size.height];
+    [tvText setFrame: reducedSize];
+}
+
+- (void) keyboardDidHide:(NSNotification*)notification {
+    [tvText setFrame: fullSize];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -132,7 +148,7 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    [self updateTextViewSizes];
+    [self updateTextViewSizes: 0];
     if([tvText isFirstResponder])
         [tvText setFrame: reducedSize];
     else
@@ -240,15 +256,15 @@
 //Methods for Handling the text view
 
 //Resize when beginninge/ending edit
--(void)textViewDidBeginEditing:(UITextView *)textView
-{
-    [textView setFrame: reducedSize];
-}
-
--(void)textViewDidEndEditing:(UITextView *)textView
-{
-    [textView setFrame: fullSize];
-}
+//-(void)textViewDidBeginEditing:(UITextView *)textView
+//{
+//    [textView setFrame: reducedSize];
+//}
+//
+//-(void)textViewDidEndEditing:(UITextView *)textView
+//{
+//    [textView setFrame: fullSize];
+//}
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
  replacementText:(NSString *)text
