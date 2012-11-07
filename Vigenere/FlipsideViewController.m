@@ -116,8 +116,53 @@
         tfLastChar.textColor = [UIColor grayColor];
         tfUnknownChar.textColor = [UIColor grayColor];
     }
+    
+    //Disallow Interface rotation while the keyboard is open (strange stuff happens otherwise)
+    if ([tfFirstChar isFirstResponder] || [tfLastChar isFirstResponder] || [tfUnknownChar isFirstResponder])
+        return NO;
+    else
+        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
 
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+//Autorotate Code for iOS 6
+-(BOOL)shouldAutorotate {
+    //Disallow Interface rotation while the keyboard is open (strange stuff happens otherwise)
+    if ([tfFirstChar isFirstResponder] || [tfLastChar isFirstResponder] || [tfUnknownChar isFirstResponder])
+        return NO;
+    else
+        return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceRotation duration:(NSTimeInterval)duration
+{
+    if(interfaceRotation == UIInterfaceOrientationPortrait)
+        {
+        //Enable the text fields since they don't obscure the keyboard anymore
+        tfFirstChar.enabled = YES;
+        tfLastChar.enabled = YES;
+        tfUnknownChar.enabled = YES;
+        
+        //Make the text black to tell the user
+        tfFirstChar.textColor = [UIColor blackColor];
+        tfLastChar.textColor = [UIColor blackColor];
+        tfUnknownChar.textColor = [UIColor blackColor];
+        }
+    else
+        {
+        //Disable the text fields since they will be obscured (a scroll view would be nicer)
+        tfFirstChar.enabled = NO;
+        tfLastChar.enabled = NO;
+        tfUnknownChar.enabled = NO;
+        
+        //Grey them out to tell the user
+        tfFirstChar.textColor = [UIColor grayColor];
+        tfLastChar.textColor = [UIColor grayColor];
+        tfUnknownChar.textColor = [UIColor grayColor];
+        }
 }
 
 #pragma mark - Actions

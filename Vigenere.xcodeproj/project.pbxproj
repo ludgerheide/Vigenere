@@ -21,6 +21,9 @@
 		7D9394BC14670C8800DD459C /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9394BA14670C8800DD459C /* MainViewController.xib */; };
 		7D9394BF14670C8800DD459C /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9394BD14670C8800DD459C /* FlipsideViewController.xib */; };
 		7D9394C714670CE000DD459C /* Vigenere.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9394C614670CE000DD459C /* Vigenere.m */; };
+		E409F718164AF315003FF542 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E409F71A164AF315003FF542 /* Default-568h@2x.png */; };
+		E409F71E164AF3BD003FF542 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E409F720164AF3BD003FF542 /* Default@2x.png */; };
+		E409F72B164AF56D003FF542 /* bild@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E409F72A164AF56D003FF542 /* bild@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,11 @@
 		7D9394C614670CE000DD459C /* Vigenere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vigenere.m; sourceTree = "<group>"; };
 		7DB0139314B77C60007917C0 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		7DDCED71146722C600243C35 /* TODO.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
+		E409F719164AF315003FF542 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
+		E409F71B164AF319003FF542 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = "de.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
+		E409F71F164AF3BD003FF542 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/Default@2x.png"; sourceTree = "<group>"; };
+		E409F721164AF3C1003FF542 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = "de.lproj/Default@2x.png"; sourceTree = "<group>"; };
+		E409F72A164AF56D003FF542 /* bild@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bild@2x.png"; path = "../bild@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +126,10 @@
 				7DB0139314B77C60007917C0 /* COPYING */,
 				7D82BC9A149A037E0062477F /* Localizable.strings */,
 				7D92D9BC1467509400A37A9D /* bild.png */,
+				E409F72A164AF56D003FF542 /* bild@2x.png */,
 				7D82BC9E149A03950062477F /* Default.png */,
+				E409F720164AF3BD003FF542 /* Default@2x.png */,
+				E409F71A164AF315003FF542 /* Default-568h@2x.png */,
 				7DDCED71146722C600243C35 /* TODO.rtf */,
 				7D9394AA14670C8700DD459C /* Vigenere-Info.plist */,
 				7D9394AB14670C8700DD459C /* InfoPlist.strings */,
@@ -155,7 +166,7 @@
 		7D93949514670C8700DD459C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Ludger Heide";
 			};
 			buildConfigurationList = 7D93949814670C8700DD459C /* Build configuration list for PBXProject "Vigenere" */;
@@ -187,6 +198,9 @@
 				7D92D9BD1467509400A37A9D /* bild.png in Resources */,
 				7D82BC9C149A03950062477F /* Default.png in Resources */,
 				7D82BC98149A037E0062477F /* Localizable.strings in Resources */,
+				E409F718164AF315003FF542 /* Default-568h@2x.png in Resources */,
+				E409F71E164AF3BD003FF542 /* Default@2x.png in Resources */,
+				E409F72B164AF56D003FF542 /* bild@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +283,26 @@
 			name = FlipsideViewController.xib;
 			sourceTree = "<group>";
 		};
+		E409F71A164AF315003FF542 /* Default-568h@2x.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E409F719164AF315003FF542 /* en */,
+				E409F71B164AF319003FF542 /* de */,
+			);
+			name = "Default-568h@2x.png";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		E409F720164AF3BD003FF542 /* Default@2x.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E409F71F164AF3BD003FF542 /* en */,
+				E409F721164AF3C1003FF542 /* de */,
+			);
+			name = "Default@2x.png";
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -290,6 +324,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -310,6 +345,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -332,6 +368,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vigenere/Vigenere-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "Vigenere/Vigenere-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -350,6 +387,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vigenere/Vigenere-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "Vigenere/Vigenere-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";

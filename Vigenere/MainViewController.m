@@ -54,6 +54,10 @@
     
     //Initialize vigenere with them
     vigenere = [[Vigenere alloc] initWithfirstChar: firstChar lastChar: lastChar unknownChar: unknownChar];
+    
+    //Initialize the text field bounds since iOS 6 doesn't call rotation at launch anymore
+    fullSize = CGRectMake(0, 57, 320, 344);
+    reducedSize = CGRectMake(0, 57, 320, 198);
 }
 
 - (void)viewDidUnload
@@ -111,6 +115,38 @@
     }
     NSLog(@"%f %f %f %f", tvText.bounds.origin.x, tvText.bounds.origin.y, tvText.bounds.size.width, tvText.bounds.size.height);
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+//Autorotate Code for iOS 6
+-(BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceRotation duration:(NSTimeInterval)duration
+{
+    if(interfaceRotation == UIInterfaceOrientationPortrait)
+        {
+        fullSize = CGRectMake(0, 57, 320, 344);
+        reducedSize = CGRectMake(0, 57, 320, 198);
+        if([tvText isFirstResponder])
+            [tvText setFrame: reducedSize];
+        else
+            [tvText setFrame: fullSize];
+        }
+    else
+        {
+        fullSize = CGRectMake(0, 57, 480, 184);
+        reducedSize = CGRectMake(0, 57, 480, 83);
+        if([tvText isFirstResponder])
+            [tvText setFrame: reducedSize];
+        else
+            [tvText setFrame: fullSize];
+        }
+    NSLog(@"%f %f %f %f", tvText.bounds.origin.x, tvText.bounds.origin.y, tvText.bounds.size.width, tvText.bounds.size.height);
 }
 
 #pragma mark - Flipside View
@@ -223,7 +259,7 @@
     [textView setFrame: fullSize];
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
  replacementText:(NSString *)text
 {
     // Any new character added is passed in as the "text" parameter
