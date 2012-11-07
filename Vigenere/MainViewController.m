@@ -19,6 +19,7 @@
 @synthesize mode;
 @synthesize fullSize;
 @synthesize reducedSize;
+@synthesize screenSize;
 
 @synthesize upperCase;
 @synthesize lowerCase;
@@ -56,8 +57,8 @@
     vigenere = [[Vigenere alloc] initWithfirstChar: firstChar lastChar: lastChar unknownChar: unknownChar];
     
     //Initialize the text field bounds since iOS 6 doesn't call rotation at launch anymore
-    fullSize = CGRectMake(0, 57, 320, 344);
-    reducedSize = CGRectMake(0, 57, 320, 198);
+    [self updateTextViewSizes];
+    [tvText setFrame: fullSize];
 }
 
 - (void)viewDidUnload
@@ -92,33 +93,36 @@
 	[super viewDidDisappear:animated];
 }
 
+- (void)updateTextViewSizes
+{
+    screenSize = [[UIScreen mainScreen] bounds];
+    //Somehow iOS doesn't echange width and height when we rotate, so I have do do it manually
+    //Also, we have to compensate for different keyboard sizes
+    int keyBoardCompensation = 294;
+    if ([self interfaceOrientation] == UIInterfaceOrientationLandscapeLeft || [self interfaceOrientation] == UIInterfaceOrientationLandscapeRight)
+    {
+        CGFloat temp = screenSize.size.height;
+        screenSize.size.height = screenSize.size.width;
+        screenSize.size.width = temp;
+        keyBoardCompensation = 240;
+    }
+    fullSize = CGRectMake(screenSize.origin.x, (screenSize.origin.y + 57), screenSize.size.width, (screenSize.size.height - 136));
+    reducedSize = CGRectMake(screenSize.origin.x, (screenSize.origin.y + 57), screenSize.size.width, (screenSize.size.height - keyBoardCompensation));
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    if(interfaceOrientation == UIInterfaceOrientationPortrait)
-    {
-        fullSize = CGRectMake(0, 57, 320, 344);
-        reducedSize = CGRectMake(0, 57, 320, 198);
-        if([tvText isFirstResponder])
-            [tvText setFrame: reducedSize];
-        else
-            [tvText setFrame: fullSize];
-    }
+    if (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown)
+        {
+        //[self didRotateFromInterfaceOrientation: interfaceOrientation];
+        return YES;
+        }
     else
-    {
-        fullSize = CGRectMake(0, 57, 480, 184);
-        reducedSize = CGRectMake(0, 57, 480, 83);
-        if([tvText isFirstResponder])
-            [tvText setFrame: reducedSize];
-        else
-            [tvText setFrame: fullSize];
-    }
-    NSLog(@"%f %f %f %f", tvText.bounds.origin.x, tvText.bounds.origin.y, tvText.bounds.size.width, tvText.bounds.size.height);
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+        return NO;
 }
 
 //Autorotate Code for iOS 6
--(BOOL)shouldAutorotate {
+- (BOOL)shouldAutorotate {
     return YES;
 }
 
@@ -126,26 +130,13 @@
     return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceRotation duration:(NSTimeInterval)duration
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    if(interfaceRotation == UIInterfaceOrientationPortrait)
-        {
-        fullSize = CGRectMake(0, 57, 320, 344);
-        reducedSize = CGRectMake(0, 57, 320, 198);
-        if([tvText isFirstResponder])
-            [tvText setFrame: reducedSize];
-        else
-            [tvText setFrame: fullSize];
-        }
+    [self updateTextViewSizes];
+    if([tvText isFirstResponder])
+        [tvText setFrame: reducedSize];
     else
-        {
-        fullSize = CGRectMake(0, 57, 480, 184);
-        reducedSize = CGRectMake(0, 57, 480, 83);
-        if([tvText isFirstResponder])
-            [tvText setFrame: reducedSize];
-        else
-            [tvText setFrame: fullSize];
-        }
+        [tvText setFrame: fullSize];
     NSLog(@"%f %f %f %f", tvText.bounds.origin.x, tvText.bounds.origin.y, tvText.bounds.size.width, tvText.bounds.size.height);
 }
 

@@ -42,7 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[self willRotateToInterfaceOrientation: [self interfaceOrientation] duration: 0];
 }
 
 - (void)viewDidUnload
@@ -91,37 +91,15 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    if(interfaceOrientation == UIInterfaceOrientationPortrait)
-    {
-        //Enable the text fields since they don't obscure the keyboard anymore
-        tfFirstChar.enabled = YES;
-        tfLastChar.enabled = YES;
-        tfUnknownChar.enabled = YES;
-        
-        //Make the text black to tell the user
-        tfFirstChar.textColor = [UIColor blackColor];
-        tfLastChar.textColor = [UIColor blackColor];
-        tfUnknownChar.textColor = [UIColor blackColor];
-    }
-    else
-    {
-        //Disable the text fields since they will be obscured (a scroll view would be nicer)
-        tfFirstChar.enabled = NO;
-        tfLastChar.enabled = NO;
-        tfUnknownChar.enabled = NO;
-        
-        //Grey them out to tell the user
-        tfFirstChar.textColor = [UIColor grayColor];
-        tfLastChar.textColor = [UIColor grayColor];
-        tfUnknownChar.textColor = [UIColor grayColor];
-    }
-    
-    //Disallow Interface rotation while the keyboard is open (strange stuff happens otherwise)
     if ([tfFirstChar isFirstResponder] || [tfLastChar isFirstResponder] || [tfUnknownChar isFirstResponder])
         return NO;
+    else if (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown)
+        {
+            [self willRotateToInterfaceOrientation: interfaceOrientation duration: 0];
+            return YES;
+        }
     else
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+        return NO;
 }
 
 //Autorotate Code for iOS 6

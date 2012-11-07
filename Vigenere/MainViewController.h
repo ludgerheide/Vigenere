@@ -19,6 +19,7 @@
 @property NSInteger mode;
 @property CGRect fullSize;
 @property CGRect reducedSize;
+@property CGRect screenSize;
 
 @property BOOL upperCase;
 @property BOOL lowerCase;
