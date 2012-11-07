@@ -129,18 +129,20 @@
         tfLastChar.textColor = [UIColor blackColor];
         tfUnknownChar.textColor = [UIColor blackColor];
         }
-    else
-        {
+    else{
         //Disable the text fields since they will be obscured (a scroll view would be nicer)
-        tfFirstChar.enabled = NO;
-        tfLastChar.enabled = NO;
-        tfUnknownChar.enabled = NO;
-        
-        //Grey them out to tell the user
-        tfFirstChar.textColor = [UIColor grayColor];
-        tfLastChar.textColor = [UIColor grayColor];
-        tfUnknownChar.textColor = [UIColor grayColor];
+        //But only if we're not on an iPad
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            tfFirstChar.enabled = NO;
+            tfLastChar.enabled = NO;
+            tfUnknownChar.enabled = NO;
+            
+            //Grey them out to tell the user
+            tfFirstChar.textColor = [UIColor grayColor];
+            tfLastChar.textColor = [UIColor grayColor];
+            tfUnknownChar.textColor = [UIColor grayColor];
         }
+    }
 }
 
 #pragma mark - Actions
